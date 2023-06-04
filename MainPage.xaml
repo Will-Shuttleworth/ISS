@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ISS.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:ISS.Model"
+    xmlns:viewmodel="clr-namespace:ISS.ViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:ISSViewModel">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding IssCrew}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Crew">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125">
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10"
+                                    VerticalOptions="Center">
+                                    <Label Text="test" />
+                                    <Label Text="test" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="8"
+            Command="{Binding GetCrewCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Text="Get Crew" />
+
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            Color="PaleVioletRed" />
+    </Grid>
+
+</ContentPage>
