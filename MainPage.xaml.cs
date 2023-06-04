@@ -1,13 +1,11 @@
-﻿using ISS.ViewModel;
-
-namespace ISS;
+﻿namespace ISS;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(ISSViewModel viewModel)
+	public MainPage()
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
+		
 	}
 
 }
