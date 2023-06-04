@@ -1,1 +1,1 @@
-Program to find and record position of ISS and it's crew
+Program to find and record the position of the ISS and its crew
