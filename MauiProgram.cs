@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using ISS.Services;
-using ISS.ViewModel;
 
 namespace ISS;
 
@@ -20,10 +18,10 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		builder.Services.AddSingleton<SpaceStationService>();
-		builder.Services.AddSingleton<CrewService>();
+		//builder.Services.AddSingleton<SpaceStationService>();
+		//builder.Services.AddSingleton<CrewService>();
 
-		builder.Services.AddSingleton<ISSViewModel>();
+		//builder.Services.AddSingleton<ISSViewModel>();
 		return builder.Build();
 	}
 }
