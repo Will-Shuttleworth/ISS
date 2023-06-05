@@ -2,7 +2,7 @@
 
 namespace ISS.Model;
 
-public class CrewMemberRoot
+public class Root
 {
     [JsonProperty("message")]
     public string Message { get; set; }
@@ -11,6 +11,6 @@ public class CrewMemberRoot
     public int Number { get; set; }
 
     [JsonProperty("people")]
-    public List<CrewMember> CrewMembers { get; set; }
+    public List<People> People { get; set; }
 }
 

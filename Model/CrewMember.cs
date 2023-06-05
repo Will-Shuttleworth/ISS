@@ -2,7 +2,7 @@
 
 namespace ISS.Model;
 
-public class CrewMember
+public class People
 {
     [JsonProperty("craft")]
     public string Craft { get; set; }

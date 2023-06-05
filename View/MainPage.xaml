@@ -3,41 +3,42 @@
     x:Class="ISS.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:model="clr-namespace:ISS.Model">
+    xmlns:model="clr-namespace:ISS.Model"
+    xmlns:viewmodel="clr-namespace:ISS.ViewModel.CrewViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:CrewViewModel">
+
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
-        <CollectionView>
-            <CollectionView.ItemsSource>
-                <x:Array Type="{x:Type model:CrewMember}">
-                    <model:CrewMember Name="Will" Craft="ISS" />
-                </x:Array>
-            </CollectionView.ItemsSource>
+        <CollectionView BackgroundColor="DarkGrey" ItemsSource="{Binding CrewMembers}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:CrewMember">
-                    <HorizontalStackLayout Padding="10">
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label
-                                FontSize="25"
-                                Text="{Binding Craft}"
-                                TextColor="NavajoWhite" />
-                            <Label
-                                FontSize="25"
-                                Text="{Binding Name}"
-                                TextColor="NavajoWhite" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
+                <DataTemplate x:DataType="model:Root">
+                    <Grid Padding="10">
+                        <Frame Padding="0" HeightRequest="125">
+                            <Grid Padding="0" ColumnDefinitions="125, *">
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10"
+                                    VerticalOptions="Center">
+                                    <Label Text="{Binding People}" />
+                                    <Label Text="{Binding Number}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
         <Button
             Grid.Row="1"
-            Grid.Column="0"
             Margin="8"
-            Text="Test" />
+            Command="{Binding GetCrewMembersCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Text="Get CrewMembers" />
     </Grid>
 </ContentPage>
 
