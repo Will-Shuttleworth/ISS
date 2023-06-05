@@ -12,9 +12,9 @@ public class CrewService
         httpClient = new HttpClient();
     }
 
-    List<Root> crewMembersList = new();
+    List<CrewMemberRoot> crewMembersList = new();
 
-    public async Task<List<Root>> GetCrewMembers()
+    public async Task<List<CrewMemberRoot>> GetCrewMembers()
     {
         if (crewMembersList?.Count > 0)
             return crewMembersList;
@@ -25,7 +25,7 @@ public class CrewService
 
         if (response.IsSuccessStatusCode)
         {
-            crewMembersList = await response.Content.ReadFromJsonAsync<List<Root>>();
+            crewMembersList = await response.Content.ReadFromJsonAsync<List<CrewMemberRoot>>();
         }
 
         return crewMembersList;

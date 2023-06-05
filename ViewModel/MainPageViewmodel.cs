@@ -3,13 +3,13 @@ using ISS.Services.CrewService;
 
 namespace ISS.ViewModel.CrewViewModel;
 
-public partial class CrewViewModel : BaseViewModel
+public partial class MainPageViewmodel : BaseViewModel
 {
     readonly CrewService _crewService;
 
-    public ObservableCollection<Root> CrewMembers { get; } = new();
+    public ObservableCollection<CrewMemberRoot> CrewMembers { get; } = new();
 
-    public CrewViewModel(CrewService crewService)
+    public MainPageViewmodel(CrewService crewService)
     {
         Title = "ISS Locator";
         this._crewService = crewService;

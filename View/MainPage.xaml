@@ -6,16 +6,16 @@
     xmlns:model="clr-namespace:ISS.Model"
     xmlns:viewmodel="clr-namespace:ISS.ViewModel.CrewViewModel"
     Title="{Binding Title}"
-    x:DataType="viewmodel:CrewViewModel">
+    x:DataType="viewmodel:MainPageViewmodel">
 
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0">
-        <CollectionView BackgroundColor="DarkGrey" ItemsSource="{Binding CrewMembers}">
+        <CollectionView BackgroundColor="Transparent" ItemsSource="{Binding CrewMembers}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Root">
+                <DataTemplate x:DataType="model:CrewMemberRoot">
                     <Grid Padding="10">
                         <Frame Padding="0" HeightRequest="125">
                             <Grid Padding="0" ColumnDefinitions="125, *">
@@ -23,7 +23,7 @@
                                     Grid.Column="1"
                                     Padding="10"
                                     VerticalOptions="Center">
-                                    <Label Text="{Binding People}" />
+                                    <Label Text="{Binding CrewMembers}" />
                                     <Label Text="{Binding Number}" />
                                 </VerticalStackLayout>
                             </Grid>
@@ -38,7 +38,7 @@
             Margin="8"
             Command="{Binding GetCrewMembersCommand}"
             IsEnabled="{Binding IsNotBusy}"
-            Text="Get CrewMembers" />
+            Text="Get Crew Members" />
     </Grid>
 </ContentPage>
 

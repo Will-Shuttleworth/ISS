@@ -4,7 +4,7 @@ namespace ISS;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(CrewViewModel crewViewModel)
+	public MainPage(MainPageViewmodel crewViewModel)
 	{
 		InitializeComponent();
 		BindingContext = crewViewModel;
