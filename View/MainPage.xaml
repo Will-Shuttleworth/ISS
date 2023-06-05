@@ -3,8 +3,7 @@
     x:Class="ISS.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:model="clr-namespace:ISS.Model"
-    xmlns:viewmodel="clr-namespace:ISS.ViewModel">
+    xmlns:model="clr-namespace:ISS.Model">
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"
@@ -13,7 +12,7 @@
         <CollectionView>
             <CollectionView.ItemsSource>
                 <x:Array Type="{x:Type model:CrewMember}">
-                    <model:CrewMember Name="Will" Station="ISS" />
+                    <model:CrewMember Name="Will" Craft="ISS" />
                 </x:Array>
             </CollectionView.ItemsSource>
             <CollectionView.ItemTemplate>
@@ -22,7 +21,7 @@
                         <VerticalStackLayout VerticalOptions="Center">
                             <Label
                                 FontSize="25"
-                                Text="{Binding Station}"
+                                Text="{Binding Craft}"
                                 TextColor="NavajoWhite" />
                             <Label
                                 FontSize="25"
