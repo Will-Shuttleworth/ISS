@@ -1,11 +1,14 @@
-﻿namespace ISS;
+﻿using ISS.View;
+using ISS.ViewModel.MainPageViewModel;
 
-public partial class MainPage : ContentPage
+namespace ISS;
+
+public partial class MainPage : ContentPageBase
 {
-	public MainPage()
+	public MainPage(MainPageViewModel mainPageViewModel)
 	{
-		InitializeComponent();
-		
+        BindingContext = mainPageViewModel;
+        InitializeComponent();
 	}
 
 }
