@@ -1,10 +1,6 @@
-﻿
+﻿namespace ISS.Model;
 
-using System;
-
-namespace ISS.Model;
-
-class CrewMemberRoot
+public class CrewMemberRoot
 {
     public string Message { get; set; }
     public int Number { get; set; }
