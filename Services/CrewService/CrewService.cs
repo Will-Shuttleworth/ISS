@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISS.Services.CrewService;
 
-public class CrewService
+public class CrewService : ICrewService
 {
     HttpClient httpClient;
 
@@ -16,9 +16,9 @@ public class CrewService
         httpClient = new HttpClient();
     }
 
-    public async Task<CrewMemberRoot> GetCrewMembers()
+    public async Task<List<CrewMember>> GetCrewMembers()
     {
-        CrewMemberRoot _crewMember = new CrewMemberRoot();
+        List<CrewMember> _crewMembers = new List<CrewMember>();
         
 
         var url = "http://api.open-notify.org/astros.json";
@@ -27,10 +27,11 @@ public class CrewService
 
         if(response.IsSuccessStatusCode) 
         {
-            _crewMember = await response.Content.ReadFromJsonAsync<CrewMemberRoot>();
+            CrewMemberRoot rawContent = await response.Content.ReadFromJsonAsync<CrewMemberRoot>();
+            _crewMembers = rawContent.CrewMembers;
         }
 
-        return _crewMember;
+        return _crewMembers;
     }
 }
 

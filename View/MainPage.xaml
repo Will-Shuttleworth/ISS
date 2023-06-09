@@ -7,41 +7,40 @@
     xmlns:view="clr-namespace:ISS.View"
     xmlns:viewmodel="clr-namespace:ISS.ViewModel.MainPageViewModel"
     Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <viewmodel:MainPageViewModel />
-    </ContentPage.BindingContext>
-    <Grid
-        ColumnDefinitions="*,*"
-        ColumnSpacing="5"
-        RowDefinitions="*,Auto"
-        RowSpacing="0">
-        <CollectionView ItemsSource="{Binding CrewMembers}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:CrewMember">
-                    <HorizontalStackLayout Padding="10">
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label
-                                FontSize="25"
-                                Text="{Binding Craft}"
-                                TextColor="NavajoWhite" />
-                            <Label
-                                FontSize="25"
-                                Text="{Binding Name}"
-                                TextColor="NavajoWhite" />
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+    
+    <view:ContentPageBase.Content>
+        <Grid
+            ColumnDefinitions="*,*"
+            ColumnSpacing="5"
+            RowDefinitions="*,Auto"
+            RowSpacing="0">
+            <CollectionView ItemsSource="{Binding CrewMembers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Padding="10">
+                            <VerticalStackLayout VerticalOptions="Center">
+                                <Label
+                                    FontSize="25"
+                                    Text="{Binding Craft}"
+                                    TextColor="NavajoWhite" />
+                                <Label
+                                    FontSize="25"
+                                    Text="{Binding Name}"
+                                    TextColor="NavajoWhite" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
-        <Button
-            Grid.Row="1"
-            Grid.Column="0"
-            Margin="8"
-            Command="{Binding GetCrewMembersCommand}"
-            Text="Get crew members" />
-    </Grid>
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8"
+                Command="{Binding GetCrewMembersCommand}"
+                Text="Get crew members" />
+        </Grid>
+    </view:ContentPageBase.Content>
 </view:ContentPageBase>
 

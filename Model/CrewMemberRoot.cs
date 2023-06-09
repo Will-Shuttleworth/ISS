@@ -1,17 +1,17 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization; 
 
 namespace ISS.Model;
 
 public class CrewMemberRoot
 {
-    [JsonProperty("message")]
+    [JsonPropertyName("message")]
     public string Message { get; set; }
 
-    [JsonProperty("number")]
+    [JsonPropertyName("number")]
     public int Number { get; set; }
 
-    [JsonProperty("people")]
+    [JsonPropertyName("people")]
     public List<CrewMember> CrewMembers { get; set; }
 }

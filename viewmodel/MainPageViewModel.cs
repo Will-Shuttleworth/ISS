@@ -1,5 +1,6 @@
 ﻿using ISS.Model;
 using ISS.Services.CrewService;
+using CuttingEdge.Conditions;
 using ISS.ViewModel;
 using Microsoft.Maui.Controls;
 using System;
@@ -7,22 +8,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Condition = CuttingEdge.Conditions.Condition;
 
 namespace ISS.ViewModel.MainPageViewModel;
 
 public partial class MainPageViewModel : BaseViewModel
 {
-    CrewService _crewService;
+    private readonly ICrewService _crewService;
+    private readonly List<CrewMember> _membersStubData = new List<CrewMember>() 
+    { 
+        new CrewMember()
+        {
+            Name = "Bob",
+            Craft = "mynecraft"
+        },
+        new CrewMember()
+        {
+            Name = "Phil",
+            Craft = "mynecraft"
+        },
+    };
 
-    [ObservableProperty]
-    CrewMemberRoot crewMembers = new CrewMemberRoot();
+    public ObservableCollection<CrewMember> CrewMembers { get; } = new ObservableCollection<CrewMember>();
 
-    public MainPageViewModel() { }
-
-    public MainPageViewModel(CrewService crewService)
+    public MainPageViewModel(ICrewService crewService)
     {
+        Condition.Requires(crewService, nameof(crewService)).IsNotNull();
         Title = "MainPage";
         this._crewService = crewService;
+        AddItems(_membersStubData);
+    }
+
+    public Task AddItems(List<CrewMember> crewMembers)
+    {
+        int index = 0;
+        foreach(var member in crewMembers)
+        {
+            CrewMembers.Insert(index, member);
+            index++;
+        }
+        
+        return Task.CompletedTask;
     }
 
     [RelayCommand]
@@ -34,8 +60,9 @@ public partial class MainPageViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            CrewMembers = await _crewService.GetCrewMembers();
-
+            var CrewMembersData = await _crewService.GetCrewMembers();
+            await AddItems(CrewMembersData);
+            
 
         }
         catch (Exception ex)
