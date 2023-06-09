@@ -1,8 +1,13 @@
-﻿namespace ISS.Model;
+﻿using Newtonsoft.Json;
 
-class SpaceStationPosition
+namespace ISS.Model;
+
+public class IssPosition
 {
+    [JsonProperty("latitude")]
     public string Latitude { get; set; }
+
+    [JsonProperty("longitude")]
     public string Longitude { get; set; }
 }
 

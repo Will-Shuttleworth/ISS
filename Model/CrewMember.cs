@@ -1,8 +1,14 @@
-﻿namespace ISS.Model;
+﻿using Newtonsoft.Json;
+
+namespace ISS.Model;
 
 public class CrewMember
 {
-    public string Station { get; set; }
+    [JsonProperty("craft")]
+    public string Craft { get; set; }
+
+    [JsonProperty("name")]
     public string Name { get; set; }
+
 }
 

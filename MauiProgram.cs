@@ -22,8 +22,8 @@ public static class MauiProgram
 		//builder.Services.AddSingleton<SpaceStationService>();
 		//builder.Services.AddSingleton<CrewService>();
 
-		builder.Services.AddTransient<MainPageViewModel>();
-        builder.Services.AddTransient<MainPage>();
+		builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<MainPage>();
         return builder.Build();
 	}
 }
