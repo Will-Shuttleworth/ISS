@@ -49,12 +49,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <AndroidResource Remove="obj\**" />
+	  <Compile Remove="obj\**" />
+	  <EmbeddedResource Remove="obj\**" />
+	  <MauiCss Remove="obj\**" />
+	  <MauiXaml Remove="obj\**" />
+	  <None Remove="obj\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="CuttingEdge.Conditions" Version="1.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\SpaceStationService\" />
 	</ItemGroup>
 
 </Project>

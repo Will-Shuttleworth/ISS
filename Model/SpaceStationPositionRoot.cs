@@ -1,9 +1,16 @@
-﻿namespace ISS.Model;
+﻿using Newtonsoft.Json;
 
-class SpaceStationPositionRoot
+namespace ISS.Model;
+
+public class IssPositionRoot
 {
-    public int Timestamp { get; set; }
+    [JsonProperty("iss_position")]
+    public IssPosition IssPosition { get; set; }
+
+    [JsonProperty("message")]
     public string Message { get; set; }
-    public SpaceStationPosition SpaceStationPositions { get; set; }
+
+    [JsonProperty("timestamp")]
+    public int Timestamp { get; set; }
 }
 
